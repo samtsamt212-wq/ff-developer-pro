@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF DEVELOPER PRO - روابطي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+            border-radius: 25px;
+            padding: 50px 40px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                        inset 0 0 20px rgba(212, 175, 55, 0.1);
+            text-align: center;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            border-radius: 25px 25px 0 0;
+        }
+
+        .profile {
+            margin-bottom: 35px;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
+            border: 4px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 900;
+            color: #d4af37;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: #1a1a1a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .bio {
+            color: #b0b0b0;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-right: 3px solid #d4af37;
+        }
+
+        .bio-title {
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff6b35 0%, #d4af37 100%);
+            border: none;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 900;
+            font-size: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(255, 107, 53, 0.6);
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn span {
+            margin-left: 12px;
+            font-size: 22px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 2px solid #d4af37;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-btn:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: #1a1a1a;
+            border-color: #ffd700;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn span {
+            margin-left: 12px;
+            font-size: 20px;
+            display: inline-block;
+        }
+
+        .social-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            color: #808080;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #808080;
+            letter-spacing: 1px;
+        }
+
+        .footer span {
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 26px;
+            }
+
+            .avatar {
+                width: 110px;
+                height: 110px;
+            }
+
+            .bio {
+                font-size: 13px;
+                padding: 12px;
+            }
+
+            .download-btn {
+                font-size: 14px;
+                padding: 16px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .badge-premium {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 11px;
+            font-weight: 900;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <div class="avatar">
+                <img src="profile.png" alt="FF DEVELOPER PRO">
+            </div>
+            
+            <div class="name">FF DEVELOPER PRO</div>
+            <div class="badge">⚡ احترافي مطور</div>
+            
+            <div class="bio">
+                <div class="bio-title">🎯 مطوّر تطبيق FF-Aim Master Pro</div>
+                🔥 محتوى تدريب وتصويب Free Fire<br>
+                📲 حمّل التطبيق وابدأ رحلتك نحو الاحتراف
+            </div>
+
+            <a href="https://samtsamt212-wq.github.io/ff-aim-master-pro/" class="download-btn" target="_blank">
+                <span>📱</span>
+                حمّل التطبيق الآن
+            </a>
+            <div class="badge-premium">🎮 تطبيق احترافي متقدم</div>
+
+            <div class="social-stats">
+                <div class="stat">
+                    <div class="stat-number">🚀</div>
+                    <div class="stat-label">تطبيق احترافي</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">💎</div>
+                    <div class="stat-label">محتوى متقدم</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">⭐</div>
+                    <div class="stat-label">موثوق وآمن</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="links">
+            <a href="https://www.instagram.com/ff_developer_pro?igsh=MzFtaTg2YTBzbDdi" class="link-btn" target="_blank">
+                <span>📷</span>
+                Instagram
+            </a>
+            <a href="https://www.tiktok.com/@ff_developerpro?_r=1&_t=ZS-991EXucnrD3" class="link-btn" target="_blank">
+                <span>🎵</span>
+                TikTok
+            </a>
+            <a href="https://www.youtube.com/@Ff_developerpro" class="link-btn" target="_blank">
+                <span>▶️</span>
+                YouTube
+            </a>
+            <a href="https://t.me/Ff_developerpro" class="link-btn" target="_blank">
+                <span>📲</span>
+                Telegram
+            </a>
+        </div>
+
+        <div class="footer">
+            <span>🔥</span> FF DEVELOPER PRO - تطبيق الاحتراف <span>🔥</span><br>
+            <span>✨</span> كود احترافي | تطوير متقدم | تصويب مثالي <span>✨</span>
+        </div>
+    </div>
+</body>
+</html>
